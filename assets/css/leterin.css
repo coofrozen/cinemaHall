@@ -1,0 +1,58 @@
+.leter{
+
+	color: #fff;
+	font-size: 2em;
+	margin-top: 15px;
+	padding: 0;
+	transition: .5s;
+	transform: perspective(1000px) rotateX(35deg);
+}
+.leter .char1,
+.leter .char2,
+.leter .char3,
+.leter .char4,
+.leter .char5,
+.leter .char6,
+.leter .char7
+
+{
+	display: inline-block;
+	padding: 0 10px;
+	transition: .5s;
+	text-shadow: 0 5px 2px rgba(0,0,0,.1);
+	box-shadow: 10px 20px 20px rgba(0,0,0,.1);
+}
+.leter .char1,
+.leter .char3,
+.leter .char5,
+.leter .char7
+{
+	background: #82c427;
+	transform: skewY(-15deg);
+}
+.leter .char2,
+.leter .char4,
+.leter .char6
+{
+	background: #9aff0f;
+	transform: skewY(15deg);
+}
+
+.leter:hover .char1,
+.leter:hover .char2,
+.leter:hover .char3,
+.leter:hover .char4,
+.leter:hover .char5,
+.leter:hover .char6,
+.leter:hover .char7
+
+{
+background: #82c427;
+transform: skewY(0deg);
+filter: blur(0);
+box-shadow: 0 2px 2px rgba(0,0,0,.1);
+}
+.leter:hover
+{
+	transform: perspective(0px) rotateX(0deg);
+}
