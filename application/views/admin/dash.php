@@ -26,31 +26,31 @@
         </ol>     
                <div class="carousel-inner">
                         <div class="item active">
-                            <div class="fill" style="background-image:url('<?php echo base_url()?>assets/img/temp_img/ww1.jpg');"></div>
+                            <div class="fill" style="background-image:url('<?php echo base_url()?>assets/img/temp_img/vv.jpg');"></div>
                             <!-- <div class="carousel-caption">
                                 <h2>Caption 1</h2>
                             </div> -->
                         </div>
                         <div class="item">
-                            <div class="fill" style="background-image:url('<?php echo base_url()?>assets/img/temp_img/xx.jpg');"></div>
+                            <div class="fill" style="background-image:url('<?php echo base_url()?>assets/img/temp_img/ww.jpg');"></div>
                             <!-- <div class="carousel-caption">
                                 <h2>Caption 2</h2>
                             </div> -->
                         </div>
                         <div class="item">
-                            <div class="fill" style="background-image:url('<?php echo base_url()?>assets/img/temp_img/yy.jpg');"></div>
+                            <div class="fill" style="background-image:url('<?php echo base_url()?>assets/img/temp_img/xx.jpg');"></div>
                             <!-- <div class="carousel-caption">
                                 <h2>Caption 3</h2>
                             </div> -->
                         </div>
                         <div class="item">
-                            <div class="fill" style="background-image:url('<?php echo base_url()?>assets/img/temp_img/zz.jpg');"></div>
+                            <div class="fill" style="background-image:url('<?php echo base_url()?>assets/img/temp_img/yy.jpg');"></div>
                             <!-- <div class="carousel-caption">
                                 <h2>Caption 4</h2>
                             </div> -->
                         </div>
                         <div class="item">
-                            <div class="fill" style="background-image:url('<?php echo base_url()?>assets/img/temp_img/vv.jpg');"></div>
+                            <div class="fill" style="background-image:url('<?php echo base_url()?>assets/img/temp_img/zz.jpg');"></div>
                            <!--  <div class="carousel-caption">
                                 <h2>Caption 5</h2>
                             </div> -->
@@ -150,144 +150,8 @@
 </section> 
       <!-- dashboard section end -->
       <!-- news section start -->
-<section class="content">
-  <div class="row">
-        <div class="col-xs-12">
-          <div class="box box-danger">
-            <div class="box-header">
-              <h4 class="text-danger"><i class="fas fa-newspaper"></i> Trending News</h4>
-            </div>
 
-          <div class="card-body">
-            <div class="row">
-  
-                  <div class="col-md-4">
-                      <!-- Box Comment -->
-                      <div class="box box-widget">
-                        <div class="box-header with-border">
-                          <div class="user-block">
-                            <img class="img-circle" src="<?php echo base_url("assets/img/check/telecomSolution.jpg")?>" alt="User Image">
-                            <span class="username"><a href="#">IS 5G THE FUTURE OF THE WORLD?</a></span>
-                            <span class="description">Shared publicly - 7:30 PM Today</span>
-                          </div>
-                          <!-- /.user-block -->
-                          <div class="box-tools">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                          </div>
-                          <!-- /.box-tools -->
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                          <img class="img-responsive pad" src="<?php echo base_url("assets/img/check/telecomSolution.jpg")?>" alt="Photo">
-
-                          <h3 class="text-danger">Top tech companies are having an argument on the future of the world in technology</h3>
-                          <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
-                        </div>
-                        <!-- /.box-body -->
-                        <div class="box-footer box-comments">
-                          <p>This is the place where the partially explained article will be put. this is the place where the partially explained article will be put. this is the place where the partially explained article will be put. this is the place where the partially explained article will be put</p>
-                        </div>
-                        <!-- /.box-footer -->
-                        <div class="box-footer">
-                          <a href="#">Read more ...</a>
-                        </div>
-                        <!-- /.box-footer -->
-                      </div>
-                      <!-- /.box -->
-                    </div>
-                    <!-- /.col -->
-
-                    <div class="col-md-4">
-                      <!-- Box Comment -->
-                      <div class="box box-widget">
-                        <div class="box-header with-border">
-                          <div class="user-block">
-                            <img class="img-circle" src="<?php echo base_url("assets/img/check/telecomSolution.jpg")?>" alt="User Image">
-                            <span class="username"><a href="#">Blockchain is about to blast the global market?</a></span>
-                            <span class="description">Shared publicly - 7:30 PM Today</span>
-                          </div>
-                          <!-- /.user-block -->
-                          <div class="box-tools">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                          </div>
-                          <!-- /.box-tools -->
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                          <img class="img-responsive pad" src="<?php echo base_url("assets/img/check/web3.png")?>" alt="Photo">
-
-                          <h3 class="text-danger">Why is blockchain taking down all the financial hulks? whats is the secret behind it?</h3>
-                          <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
-
-                        </div>
-                        <!-- /.box-body -->
-                        <div class="box-footer box-comments">
-                          <p>This is the place where the partially explained article will be put. this is the place where the partially explained article will be put. this is the place where the partially explained article will be put. this is the place where the partially explained article will be put</p>
-                        </div>
-                        <!-- /.box-footer -->
-                        <div class="box-footer">
-                          <a href="#">Read more ...</a>
-                        </div>
-                        <!-- /.box-footer -->
-                      </div>
-                      <!-- /.box -->
-                    </div>
-                    <!-- /.col -->
-
-
-
-                    <div class="col-md-4">
-                      <!-- Box Comment -->
-                      <div class="box box-widget">
-                        <div class="box-header with-border">
-                          <div class="user-block">
-                            <img class="img-circle" src="<?php echo base_url("assets/img/check/telecomIndustry.png")?>" alt="User Image">
-                            <span class="username"><a href="#">TELECOM SERVICE SHALL BE FREE?</a></span>
-                            <span class="description">Shared publicly - 6:30 PM Today</span>
-                          </div>
-                          <!-- /.user-block -->
-                          <div class="box-tools">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                            </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                          </div>
-                          <!-- /.box-tools -->
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="box-body">
-                          <img class="img-responsive pad" src="<?php echo base_url("assets/img/check/umed.png")?>" alt="Photo" >
-
-                          <h3 class="text-danger">Some tech experts and some activists believe that telecom service shall be free</h3>
-                          <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
-                        </div>
-                        <!-- /.box-body -->
-                        <div class="box-footer box-comments">
-                          <p>Will be put. this is the place where the partially explained article will be put. this is the place where the partially explained article will be put. this is the place where the partially explained article will be put this is the place where the partially explained article </p>
-                        </div>
-                        <!-- /.box-footer -->
-                        <div class="box-footer">
-                          <a href="#">Read more ...</a>
-                        </div>
-                        <!-- /.box-footer -->
-                      </div>
-                      <!-- /.box -->
-                    </div>
-                    <!-- /.col -->
-      
-        </div>
-        </div>
-      <!-- /.row -->
-          </div>
-      </div>
-  </div>
-</section> 
 </div>
-
-
 
     <!-- Script to Activate the Carousel -->
 <script>

@@ -83,7 +83,7 @@ $(document).ready(function() {
 
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": "<?php echo base_url('cofree/users/ajax_list')?>",
+            "url": "<?php echo base_url('Admin/users/ajax_list')?>",
             "type": "POST"
         },
 
@@ -154,7 +154,7 @@ function edit_person(id)
 
     //Ajax Load data from ajax
     $.ajax({
-        url : "<?php echo site_url('index.php/cofree/users/ajax_edit/')?>/" + id,
+        url : "<?php echo site_url('index.php/Admin/users/ajax_edit/')?>/" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data)
@@ -164,7 +164,7 @@ function edit_person(id)
             $('[name="type"]').val(data.type);
             $('[name="status"]').val(data.status);
             $('[name="fullname"]').val(data.name);
-            $('[name="oracle_id"]').val(data.oracle_id);
+            $('[name="org_id"]').val(data.org_id);
             $('[name="email"]').val(data.email);
             $('[name="phoneNo"]').val(data.phoneNo);
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
@@ -207,9 +207,9 @@ function save()
     var url;
 
     if(save_method == 'add') {
-        url = "<?php echo site_url('cofree/users/ajax_add')?>";
+        url = "<?php echo site_url('Admin/users/ajax_add')?>";
     } else {
-        url = "<?php echo site_url('cofree/users/ajax_update')?>";
+        url = "<?php echo site_url('Admin/users/ajax_update')?>";
     }
 
     // ajax adding data to database
@@ -259,7 +259,7 @@ function delete_person(id)
     {
         // ajax delete data to database
         $.ajax({
-            url : "<?php echo site_url('cofree/users/ajax_delete')?>/"+id,
+            url : "<?php echo site_url('Admin/users/ajax_delete')?>/"+id,
             type: "POST",
             dataType: "JSON",
             success: function(data)
@@ -300,9 +300,9 @@ function delete_person(id)
               </div>
             </div>
             <div class="form-group">
-              <label class="control-label col-md-3">Oracle id</label>
+              <label class="control-label col-md-3">Org. id</label>
               <div class="col-md-9">
-                <input name="oracle_id" placeholder="oracle_id" class="form-control" type="number" required="">
+                <input name="org_id" placeholder="org_id" class="form-control" type="number" required="">
                 <span class="help-block"></span>
               </div>
             </div>

@@ -37,7 +37,7 @@
         <nav class="navbar navbar-static-top navbar-fixed">
           <div class="container-fluid">
           <div class="navbar-header">
-                <a href="<?php echo base_url("cofree/home")?>" class="logo">
+                <a href="<?php echo base_url("Admin/home")?>" class="logo">
                   <!-- mini logo for sidebar mini 50x50 pixels -->
                   <span class="logo-mini"><img length="30px" width="30px" src="<?php echo base_url("assets/img/hole.png")?>" class="brandlogo-image"></span>
                   <!-- logo for regular state and mobile devices -->
@@ -52,100 +52,41 @@
           <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-newspaper text-red"></i><span>&nbsp;NEWS</span> <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-newspaper text-red"></i><span>&nbsp;CINEMAS</span> <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="#"><i class="fas fa-lightbulb text-yellow"></i> <span>&nbsp;TechTips</span>
+                    <li><a href="#"><i class="fas fa-lightbulb text-yellow"></i> <span>&nbsp;ALL CINEMA</span>
                           <span class="label label-primary pull-right">6</span>
                         </a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                      <a href="#"><i class="fa fa-envelope-open text-blue"></i> <span>&nbsp;Forums</span></a>
+                      <a href="#"><i class="fa fa-envelope-open text-blue"></i> <span>&nbsp;RESERVATIONS</span></a>
                     </li>
                 </ul>
               </li>
 
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-download text-yellow"></i><span>&nbsp;Downloads</span><span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="<?php echo base_url("cofree/do_files")?>"><i class="fas fa-file-pdf text-yellow"></i> <span>&nbsp;Files</span></a>
-                    </li>
-                    <li class="divider"></li>
-                    <li><a href="#"><i class="fab fa-app-store text-green"></i> <span>&nbsp;Apps</span></a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                      <a href="#"><i class="fas fa-file text-blue"></i> <span>&nbsp;NOSM Templates</span></a>
-                    </li>
-                </ul>
-              </li>
-
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-desktop text-red"></i><span>&nbsp;Dashboard</span> <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-home text-yellow"></i><span>&nbsp;Mains</span><span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
                     <li>
-                      <a href="<?php echo base_url("cofree/tt_list");?>"><i class="fa fa-tasks text-blue"></i> <span>&nbsp;TT Trend</span></a>
-                    </li>
-                </ul>
-              </li>
-
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bicycle text-yellow"></i><span>&nbsp;Others</span><span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li>
-		                <a href="<?php echo base_url("cofree/Structure");?>"><i class="fa fa-sitemap text-yellow"></i> <span>&nbsp;NOSM Structure</span></a>
-		              </li>
-                    <li>
-                    <li class="bg-success">LINKS</li>
-                    <li>
-                      <a href="https://intranet.ethiotelecom.et" target='_blank'><span>&nbsp;Intranet</span></a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                      <a href="https://mail.ethiotelecom.et/owa" target='_blank'> <span>&nbsp;ET Mail</span></a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                      <a href="#" target='_blank'> <span>&nbsp;Bulk SMS</span></a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                      <a href="#" target='_blank'> <span>&nbsp;FMS</span></a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                      <a href="#" target='_blank'> <span>&nbsp;PMS</span></a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                      <a href="#" target='_blank'> <span>&nbsp;Net Eco</span></a>
-                    </li>
-                </ul>
-              </li>
-
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user text-red"></i><span>&nbsp;Mains</span><span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li>
-                      <a href="<?php echo base_url('cofree/users')?>" ><span>&nbsp;Users</span></a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                      <a href="<?php echo base_url('cofree/push')?>" ><span>&nbsp;TT Upload</span></a>
+                      <a href="#" ><span>&nbsp;Others</span></a>
                     </li>
                 </ul>
               </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
+              <li>
+                  <a href="<?php echo base_url('Admin/users')?>" ><i class="fa fa-user text-yellow"></i><span>&nbsp;Users</span></a>
+              </li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="<?php echo base_url("cofree/contactus")?>"><i class="fas fa-lightbulb text-yellow"></i> <span>&nbsp;Contact Us</span></a>
+                    <li><a href="<?php echo base_url("Admin/contactus")?>"><i class="fas fa-lightbulb text-yellow"></i> <span>&nbsp;Contact Us</span></a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                      <a href="<?php echo base_url("cofree/faq")?>"><i class="fa fa-envelope-open text-blue"></i> <span>&nbsp;FAQ</span></a>
+                      <a href="<?php echo base_url("Admin/faq")?>"><i class="fa fa-envelope-open text-blue"></i> <span>&nbsp;FAQ</span></a>
                     </li>
                 </ul>
               </li>
@@ -170,7 +111,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-left">
-                  <a class="btn btn-success btn-flat" href="<?php echo base_url('cofree/personal_info');?>">Profile</a>
+                  <a class="btn btn-success btn-flat" href="<?php echo base_url('Admin/personal_info');?>">Profile</a>
                 </div>
                 <div class="pull-right">
                   <a class="btn btn-danger btn-flat" href="<?php echo base_url('login/admin_logout');?>">Sign out</a>

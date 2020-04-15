@@ -77,51 +77,9 @@ class Login extends CI_Controller {
                         );
                         
                           $this->session->set_userdata($data);
-                          redirect('cofree/home');
+                          redirect('Admin/home');
                      }
                     
-                   else if($type=='Manager')
-                     {
-                        
-                        $data = array(
-                        'name' =>$name, 
-                        'password' =>$password,
-                        'type'=>$type,
-                        'id'=>$id,
-                        'fullname'=>$fullname,
-                        'oracle_id'=>$oracleid,
-                        'region'=>$region,
-                        'email'=>$email,
-                        'department'=>$department,
-                        'date_created'=>$date_created,
-                        'date_updated'=>$date_updated,
-                        'pic'=>$profile_pic,
-                        'man_is_logged_in' => true
-                        );
-                          $this->session->set_userdata($data); 
-                          redirect('cofree/home');
-                     }
-                     else if($type=='Supervisor')
-                     {
-                        
-                        $data = array(
-                        'name' =>$name, 
-                        'password' =>$password,
-                        'type'=>$type,
-                        'id'=>$id,
-                        'fullname'=>$fullname,
-                        'oracle_id'=>$oracleid,
-                        'region'=>$region,
-                        'email'=>$email,
-                        'department'=>$department,
-                        'date_created'=>$date_created,
-                        'date_updated'=>$date_updated,
-                        'pic'=>$profile_pic,
-                        'super_is_logged_in' => true
-                        );
-                          $this->session->set_userdata($data); 
-                          redirect('cofree/home');
-                     }
 
                      else if($type=='Staff')
                      {
@@ -141,8 +99,8 @@ class Login extends CI_Controller {
                         'pic'=>$profile_pic,
                         'staff_is_logged_in' => true
                         );
-                          $this->session->set_userdata($data); 
-                          redirect('cofree/home');
+                          $this->session->set_userdata($data);
+                          redirect('home');
                      }
 
                     
