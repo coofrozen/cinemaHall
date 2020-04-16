@@ -256,10 +256,26 @@ class Spreadsheet_Excel_Reader
      *
      * Some basic initialisation
      */ 
-    function Spreadsheet_Excel_Reader()
-    {
+            // function Spreadsheet_Excel_Reader()
+            // {
+            //     $this->_ole = new OLERead();
+            //     $this->setUTFEncoder('iconv');
+            // }
+    public function __construct($file='',$store_extended_info=true,$outputEncoding='') {
         $this->_ole = new OLERead();
         $this->setUTFEncoder('iconv');
+        if ($outputEncoding != '') {
+        $this->setOutputEncoding($outputEncoding);
+        }
+        for ($i=1; $i<245; $i++) {
+        $name = strtolower(( (($i-1)/26>=1)?chr(($i-1)/26+64):'') . chr(($i-1)%26+65));
+        $this->colnames[$name] = $i;
+        $this->colindexes[$i] = $name;
+        }
+        $this->store_extended_info = $store_extended_info;
+        if ($file!="") {
+        $this->read($file);
+        }
     }
 
     // }}}

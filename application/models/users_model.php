@@ -137,14 +137,6 @@ class Users_model extends CI_Model {
 
 	}
 
-	public function get_user_email($id){
-
-		$this->db->select('email');
-		$this->db->from($this->table);
-		$this->db->where('id', $id);
-	    return $this->db->get()->row('email');
-
-	}
 
 	public function get_reciver_name($id){
 

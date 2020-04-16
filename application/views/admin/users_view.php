@@ -17,8 +17,11 @@
         <div class="col-xs-12">
           <div class="box box-info">
             <div class="box-header">
+              <button type="button" onclick="add_person()" class="btn btn-primary btn-lrg ajax" title="Ajax Request">
+                ADD USER
+              </button>
               <button type="button" onclick="reload_table()" class="btn btn-default btn-lrg ajax" title="Ajax Request">
-                <i class="fa fa-spin fa-refresh"></i>&nbsp; Reload
+                <i class="fa fa-spin fa-refresh"></i>&nbsp; RELOAD PAGE
               </button>
             </div>
             <!-- /.box-header -->
@@ -326,6 +329,7 @@ function delete_person(id)
                 <select class="form-control select2" name="type">
                   <option value="">..Please Select..</option>
                   <option value="Admin">Admin</option>
+                  <option value="Staff">Staff</option>
                 </select>                
                 <span class="help-block"></span>
               </div>

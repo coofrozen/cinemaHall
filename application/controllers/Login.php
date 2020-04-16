@@ -15,8 +15,11 @@ class Login extends CI_Controller {
     function index()
     {
     if($this->session->userdata('is_logged_in')==True){
-			redirect('cofree/home');
+			redirect('Admin/home');
 		}
+    if($this->session->userdata('staff_is_logged_in')==True){
+            redirect('home');
+        }
         $this->load->view('login/login');
     }
     
@@ -125,76 +128,28 @@ class Login extends CI_Controller {
            
 
             $array_items = array(
-                				'name', 
-                				'password',
-                				'type',
-                				'id',
+                		'name', 
+                		'password',
+                		'type',
+                		'id',
                         'fullname',
-                        'oracle_id',
-                        'region',
+                        'org_id',
                         'email',
-                        'department',
                         'date_created',
                         'date_updated',
                         'pic',
-                				'is_logged_in',
+                		'is_logged_in',
                 				);
 
 
 
         $this->session->unset_userdata($array_items);
-         $this->session->set_flashdata('msg', 'Admin Signed Out Now!');
+        $this->session->set_flashdata('msg1', 'Admin Signed Out Now!');
             redirect('login');
 
     }
 
-     public function man_logout()
-    {
-            $array_items = array(   
-                        'name',
-                        'password' ,
-                        'type',
-                        'id',
-                        'fullname',
-                        'oracle_id',
-                        'region',
-                        'email',
-                        'department',
-                        'date_created',
-                        'date_updated',
-                        'pic',
-                        'man_is_logged_in'
-                        );
-        $this->session->unset_userdata($array_items);
-         $this->session->set_flashdata('msg', 'Manager Signed Out Now!');
-            redirect('login');
-  
-    }
 
-    public function super_logout()
-    {
-            $array_items = array(   
-        
-                        'name',
-                        'password' ,
-                        'type',
-                        'id',
-                        'fullname',
-                        'oracle_id',
-                        'region',
-                        'email',
-                        'department',
-                        'date_created',
-                        'date_updated',
-                        'pic',
-                        'super_is_logged_in'
-                        );
-
-        $this->session->unset_userdata($array_items);
-         $this->session->set_flashdata('msg', 'Supervisor Signed Out Now!');
-            redirect('login');
-       
-    }
      public function staff_logout()
     {
             $array_items = array(   
@@ -204,10 +159,8 @@ class Login extends CI_Controller {
                         'type',
                         'id',
                         'fullname',
-                        'oracle_id',
-                        'region',
+                        'org_id',
                         'email',
-                        'department',
                         'date_created',
                         'date_updated',
                         'pic',
@@ -215,7 +168,7 @@ class Login extends CI_Controller {
                         );
 
         $this->session->unset_userdata($array_items);
-         $this->session->set_flashdata('msg', 'Staff Signed Out Now!');
+         $this->session->set_flashdata('msg1', 'Staff Signed Out Now!');
             redirect('login');
 
     }

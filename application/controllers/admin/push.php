@@ -1,4 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class Push extends CI_Controller {
 
@@ -13,72 +14,62 @@ class Push extends CI_Controller {
 function index()
   {
 
-    $data['title']="TT PUSH";
-    $data['sub_title']="CURRENT TT";
-    $data['push_controller'] = "tt_push";
-    $data['logo']="huawei.png";
+    $data['title']="RESERVATION UPLOAD";
+    $data['sub_title']="RESERVATION";
+    $data['push_controller'] = "r_push";
+    $data['logo']="favi.png";
     $data['row_number']=$this->import_model->all_rows();
 
     $this->load->view('Templets/admintemplet/header',$data);
-    $this->load->view('admin/tt_push_view',$data);
+    $this->load->view('admin/r_push_view');
     $this->load->view('Templets/footer');
 
 
   }
 
-public function tt_push(){
+
+public function r_push(){
 
       $config = array(
-        'upload_path' => FCPATH.'upload/excel_bulk/tt/',
+        'upload_path' => FCPATH.'upload/excel_bulk/reservation_list/',
         'allowed_types' => '*'
     );
     $this->load->library('upload',$config);
-
     
     if ( ! $this->upload->do_upload('file'))
                 {
-            
             $this->session->set_flashdata("upload Failed",$this->upload->display_errors());
-               
                 }
 
 
     if ($this->upload->do_upload('file')){
-        $data=$this->upload->data();
-        @chmod($data['full_path'], 0777);
 
-        $this->load->library('spreadsheet_excel_reader');
-        $this->spreadsheet_excel_reader->setOutputEncoding('CP1251');
-
-        $this->spreadsheet_excel_reader->read($data['full_path']);
-        $sheets = $this->spreadsheet_excel_reader->sheets[0];
-        error_reporting(0);
-
-          $data_excel= array();
-            for ($i = 2; $i <= $sheets['numRows']; $i++) {
-              if ($sheets['cells'][$i][4] == '') break;
+        $file = $_FILES['file']['tmp_name'];
+              $handle = fopen($file, "r");
               
-              $titlesub = substr($sheets['cells'][$i][1],0, 30)." ...";
+              if ($handle) {
+                  $c = 0;//
 
-              
-              $data_excel[$i - 1]['job'] = $sheets['cells'][$i][4];
-              $data_excel[$i - 1]['title'] = $titlesub;
-              $data_excel[$i - 1]['handler'] = $sheets['cells'][$i][5];
-              $data_excel[$i - 1]['alarm_occ_time'] = date("Y-m-d H:i:s",strtotime($sheets['cells'][$i][12]));
 
-            }
-            $data = array(
-              'time' =>  date("Y-m-d H:i:s",strtotime("1 hour"))
-            );
-
-            $this->import_model->upl_time($data);
-            $this->import_model->push($data_excel,$table);
-
-            $this->session->set_flashdata("upload Success","File Upload Successfully");
-            @unlink($data['full_path']);
-           
+              while(($filesop = fgetcsv($handle, 1000, ",")) !== false)
+              {
+                $full_name = $filesop[0];
+                $mobile_no = $filesop[1];
+                $seat_info = $filesop[2];
+                $payment_date = $filesop[3];
+                $ticket_no = $filesop[4];
+                if($c<>0){          //SKIP THE FIRST ROW
+                      $this->import_model->push($full_name,$mobile_no,$seat_info,$payment_date,$ticket_no);
+                }
+                $c = $c + 1;
+              }
+              $this->session->set_flashdata("upload Success","File Upload Successfully");
+            } 
+            else {
+            $this->session->set_flashdata("upload Failed","unable to read file");
+            }  
     }
-            redirect('cofree/push');
+            redirect('Admin/push');
   }
 
    public function download(){
@@ -87,21 +78,11 @@ public function tt_push(){
             $this->load->helper('download');
 
             //file path
-            $file = 'upload/excel_bulk/sample/tt_sample.xls';
+            $file = 'upload/excel_bulk/sample/reservation_sample.csv';
             
             //download file from directory
             force_download($file, NULL);
 
     }
-
-   public function truncate(){
-
-    $this->import_model->truncate_tt();
-    echo json_encode(array("status" => TRUE));
-
-  }
-
-
-
 
 }

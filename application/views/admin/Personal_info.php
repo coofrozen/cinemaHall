@@ -62,17 +62,7 @@
  <!-- /.row --> 
 
 
-<!-- jquery -->
-<script src="<?php echo base_url('assets/bower_components/jquery/dist/jquery.min.js')?>"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="<?php echo base_url('assets/bower_components/bootstrap/dist/js/bootstrap.min.js')?>"></script>
-<!-- SlimScroll -->
-<script src="<?php echo base_url('assets/bower_components/jquery-slimscroll/jquery.slimscroll.min.js')?>"></script>
-<!-- FastClick -->
-<script src="<?php echo base_url('assets/bower_components/fastclick/lib/fastclick.js')?>"></script>
-<!-- AdminLTE App -->
-<script src="<?php echo base_url('assets/dist/js/adminlte.min.js')?>"></script>
-<!-- AdminLTE for demo purposes -->
+
 <script type="text/javascript">
  $(document).ready( function () {
         $('#table_id').DataTable( {
@@ -95,7 +85,7 @@
 
       //Ajax Load data from ajax
       $.ajax({
-        url : "<?php echo site_url('cofree/personal_info/ajax_edit/')?>/" + id,
+        url : "<?php echo site_url('Admin/personal_info/ajax_edit/')?>/" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data)
@@ -122,7 +112,7 @@
     function change()
     {
         save_method="update";
-         url = "<?php echo site_url('cofree/personal_info/password_update')?>";
+         url = "<?php echo site_url('Admin/personal_info/password_update')?>";
       
        // ajax adding data to database
           $.ajax({

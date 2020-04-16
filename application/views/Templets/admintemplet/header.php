@@ -39,9 +39,9 @@
           <div class="navbar-header">
                 <a href="<?php echo base_url("Admin/home")?>" class="logo">
                   <!-- mini logo for sidebar mini 50x50 pixels -->
-                  <span class="logo-mini"><img length="30px" width="30px" src="<?php echo base_url("assets/img/hole.png")?>" class="brandlogo-image"></span>
+                  <span class="logo-mini"><img length="30px" width="30px" src="<?php echo base_url("assets/img/favi.png")?>" class="brandlogo-image"></span>
                   <!-- logo for regular state and mobile devices -->
-                  <span class="logo-lg"><img length="150px" width="150px" src="<?php echo base_url("assets/img/hole.png")?>" class="brandlogo-image"></span>
+                  <span class="logo-lg"><img length="150px" width="150px" src="<?php echo base_url("assets/img/favi.png")?>" class="brandlogo-image"></span>
                 </a>
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
               <i class="fa fa-bars"></i>
@@ -51,44 +51,17 @@
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-newspaper text-red"></i><span>&nbsp;CINEMAS</span> <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="#"><i class="fas fa-lightbulb text-yellow"></i> <span>&nbsp;ALL CINEMA</span>
-                          <span class="label label-primary pull-right">6</span>
-                        </a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                      <a href="#"><i class="fa fa-envelope-open text-blue"></i> <span>&nbsp;RESERVATIONS</span></a>
-                    </li>
-                </ul>
+              <li>
+                  <a href="#"><i class="fas fa-film text-yellow"></i> <span>&nbsp;CINEMAS</span></a>
               </li>
-
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-home text-yellow"></i><span>&nbsp;Mains</span><span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li>
-                      <a href="#" ><span>&nbsp;Others</span></a>
-                    </li>
-                </ul>
+              <li>
+                  <a href="#"><i class="fa fa-check-circle text-red"></i> <span>&nbsp;RESERVATIONS</span></a>
               </li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
               <li>
-                  <a href="<?php echo base_url('Admin/users')?>" ><i class="fa fa-user text-yellow"></i><span>&nbsp;Users</span></a>
-              </li>
-              <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">About <span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="<?php echo base_url("Admin/contactus")?>"><i class="fas fa-lightbulb text-yellow"></i> <span>&nbsp;Contact Us</span></a>
-                    </li>
-                    <li class="divider"></li>
-                    <li>
-                      <a href="<?php echo base_url("Admin/faq")?>"><i class="fa fa-envelope-open text-blue"></i> <span>&nbsp;FAQ</span></a>
-                    </li>
-                </ul>
+                  <a href="<?php echo base_url('Admin/users')?>" ><i class="fa fa-user text-yellow"></i><span>&nbsp;USERS</span></a>
               </li>
                         <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">

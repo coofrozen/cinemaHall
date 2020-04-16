@@ -38,10 +38,7 @@ class OLERead {
     var $data = '';
     
     
-    function OLERead(){
-        
-        
-    }
+    //function OLERead(){}
     
     function read($sFileName){
         
