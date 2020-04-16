@@ -17,7 +17,7 @@
         <div class="col-xs-12">
           <div class="box box-warning">
             <div class="box-header">
-  <button  class="btn btn-success" onclick="add_site()"><i class="glyphicon glyphicon-plus"></i>Add Site</button>
+  <button  class="btn btn-success" onclick="add_res()"><i class="glyphicon glyphicon-plus"></i>Add Reservation</button>
 	<button class="btn btn-danger pull-right" onclick="bulk_delete()"><i class="glyphicon glyphicon-trash"></i> Bulk Delete</button>
 	           </div>
             <!-- /.box-header -->
@@ -140,7 +140,7 @@ $(document).ready(function() {
 
 ////////////////////////*****end for search and table nos****/////////////////////////////
 	
-    function add_site()
+    function add_res()
     {
       save_method = 'add';
       $('#form')[0].reset(); // reset form on modals
@@ -150,7 +150,7 @@ $(document).ready(function() {
       $('.modal-title').text('Add New Ne'); // Set Title to Bootstrap modal title
     }
 
-    function edit_site(id)
+    function edit_res(id)
     {
       save_method = 'update';
       $('#form')[0].reset(); // reset form on modals
@@ -244,7 +244,7 @@ $(document).ready(function() {
     });
 }
 
-    function delete_site(id)
+    function delete_res(id)
     {
       if(confirm('Are you sure delete the data?'))
       {

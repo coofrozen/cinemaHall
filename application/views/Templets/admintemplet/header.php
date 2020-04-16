@@ -55,7 +55,7 @@
                   <a href="#"><i class="fas fa-film text-yellow"></i> <span>&nbsp;CINEMAS</span></a>
               </li>
               <li>
-                  <a href="#"><i class="fa fa-check-circle text-red"></i> <span>&nbsp;RESERVATIONS</span></a>
+                  <a href="<?php echo base_url('Admin/reservation')?>"><i class="fa fa-check-circle text-red"></i> <span>&nbsp;RESERVATIONS</span></a>
               </li>
             </ul>
 

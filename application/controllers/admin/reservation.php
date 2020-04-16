@@ -53,11 +53,11 @@ class Reservation extends CI_Controller {
 
 
 			//add html for action
-			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_site('."'".$site->id."'".')"><i class="glyphicon glyphicon-pencil"></i></a>';
+			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_res('."'".$site->id."'".')"><i class="glyphicon glyphicon-pencil"></i></a>';
 				
 				if($this->session->userdata('is_logged_in')==True){
 			 
-			$row[] = '<a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_site('."'".$site->id."'".')"><i class="glyphicon glyphicon-trash"></i></a>';
+			$row[] = '<a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_res('."'".$site->id."'".')"><i class="glyphicon glyphicon-trash"></i></a>';
 				}
 			$data[] = $row;
 		}
