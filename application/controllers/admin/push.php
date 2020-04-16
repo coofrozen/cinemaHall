@@ -20,11 +20,15 @@ function index()
     $data['logo']="favi.png";
     $data['row_number']=$this->import_model->all_rows();
 
-    $this->load->view('Templets/admintemplet/header',$data);
-    $this->load->view('admin/r_push_view');
-    $this->load->view('Templets/footer');
 
+    if($this->session->userdata('is_logged_in')==True){
+        $this->load->view('Templets/admintemplet/header',$data);
+        $this->load->view('admin/r_push_view');
+        $this->load->view('Templets/footer');
+    }   
+    else redirect("Login");
 
+    
   }
 
 

@@ -81,65 +81,36 @@
 
           <div class="box-body">
             <div class="row">
-              <div class="col-lg-3 col-xs-6">
+              <div class="col-lg-6 col-xs-6">
                 <!-- small box -->
                 <div class="small-box bg-lime">
-                  <a href="<?php echo base_url("files")?>" class="small-box-footer">
+                  <a href="<?php echo base_url("admin/shows")?>" class="small-box-footer">
                     <div class="inner">
-                      <h2>Files</h2>
-                      <h3 class="text-white">454<sup style="font-size: 20px">+</sup></h3>
+                      <h2>SHOWS</h2>
+                      <h3 class="text-white"><?php echo $shows_count;?></h3>
                     </div>
                     <div class="icon">
-                    <i class="fas fa-file-pdf"></i>
+                    <i class="fas fa-film"></i>
                     </div>
                   </a>
                 </div>
               </div>
 
-              <div class="col-lg-3 col-xs-6">
+              <div class="col-lg-6 col-xs-6">
                 <!-- small box -->
                 <div class="small-box bg-aqua">
-                  <a href="<?php echo base_url("files")?>" class="small-box-footer">
+                  <a href="<?php echo base_url("admin/reservation")?>" class="small-box-footer">
                     <div class="inner">
-                      <h2>Apps</h2>
-                      <h3 class="text-white">344<sup style="font-size: 20px">+</sup></h3>
+                      <h2>RESERVATIONS</h2>
+                      <h3 class="text-white"><?php echo $reserve_count-1;?><sup style="font-size: 20px">+</sup></h3>
                     </div>
                     <div class="icon">
-                      <i class="fab fa-app-store"></i>
+                      <i class="fa fa-check-circle"></i>
                     </div>
                   </a>
                 </div>
               </div>
               
-              <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
-                <div class="small-box bg-orange">
-                  <div class="small-box-footer">
-                    <div class="inner">
-                      <h2>News</h2>
-                      <h3 class="text-white">500<sup style="font-size: 20px">+</sup></h3>
-                    </div>
-                    <div class="icon">
-                      <i class="fas fa-newspaper"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-lg-3 col-xs-6">
-                <!-- small box -->
-                <div class="small-box bg-teal">
-                  <div class="small-box-footer">
-                    <div class="inner">
-                      <h2>Downloads</h2>
-                      <h3 class="text-white">2122<sup style="font-size: 20px">+</sup></h3>
-                    </div>
-                    <div class="icon">
-                      <i class="fas fa-download"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
       
         </div>
         </div>

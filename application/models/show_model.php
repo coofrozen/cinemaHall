@@ -1,12 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Users_model extends CI_Model {
-
-	var $table = 'user_login';
-	var $column_order = array('username','type','status','name','oracle_id','email','phoneNo','date_created','date_updated',null); //set column field database for datatable orderable
-	var $column_search = array('name','oracle_id','phoneNo'); //set column field database for datatable searchable just firstname , lastname , address are searchable
+class Show_model extends CI_Model
+{
+	var $table = 'shows';
+	var $column_order = array( null,'show_identifier','load_time', 'show_title', 'show_genrs','show_start_date','show_end_date'); //set column field database for datatable orderable
+	var $column_search = array('show_identifier','load_time', 'show_title', 'show_genrs','show_start_date','show_end_date'); //set column field database for datatable searchable just firstname , lastname , address are searchable
 	var $order = array('id' => 'desc'); // default order 
+
 
 	public function __construct()
 	{
@@ -14,10 +15,19 @@ class Users_model extends CI_Model {
 		$this->load->database();
 	}
 
-	private function _get_datatables_query()
+
+// start to return number of rows
+
+public function all_rows()
+	{	
+	$query = $this->db->get($this->table);
+	return $query->num_rows();
+	}
+
+private function _get_datatables_query()
 	{
 		$this->db->select();
-		$this->db->from('user_login l');
+		$this->db->from('shows l');
 
 
 		$i = 0;
@@ -84,7 +94,6 @@ class Users_model extends CI_Model {
 
 		return $query->row();
 	}
-
 	public function save($data)
 	{
 		$this->db->insert($this->table, $data);
@@ -102,51 +111,12 @@ class Users_model extends CI_Model {
 		$this->db->where('id', $id);
 		$this->db->delete($this->table);
 	}
-	public function get_profile_pic(){
-		$this->db->where('id',1);
-		$this->db->select('photo');
-		$query = $this->db->get($this->table);
+	public function show_all_genrs()
+	{
+		$this->db->select('show_genre');
+		$query = $this->db->get('show_genre');
 		return $query->result();
 	}
 	
-	public function get_pass()
-	{
-		$this->db->select('password');
-	    $this->db->from($this->table);
-		$this->db->where('id',$this->session->userdata('id'));
-		$query=$this->db->get()->row();
-		return $query->password;
-	}
-
-	public function check_id_availablity($user_id){
-
-		$this->db->from($this->table);
-		$this->db->where('org_id', $user_id);
-	    $query = $this->db->get();
-	    return $query->result();
-
-	}
-
-	public function check_id_availablity_update($user_id,$row_id){
-
-		$this->db->from($this->table);
-		$this->db->where('org_id', $user_id);
-		$this->db->where('id!=', $row_id);
-	    $query = $this->db->get();
-	    return $query->result();
-
-	}
-
-
-	public function get_reciver_name($id){
-
-		$this->db->select('name');
-		$this->db->from($this->table);
-		$this->db->where('id', $id);
-	    return $this->db->get()->row('name');
-
-	}
-
-
 
 }

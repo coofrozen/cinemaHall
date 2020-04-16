@@ -9,8 +9,6 @@ public function __construct()
 			$this->load->helper('url');
 	 		$this->load->model('users_model');
 
-			
-
 	 	}
 	
 	public function index()
@@ -19,23 +17,13 @@ public function __construct()
 		
 		$data['title']="Personal Info";
 
-		if($this->session->userdata('staff_is_logged_in')==True){
-		$this->load->view('Templets/stafftemplet/header',$data);
-		}
-		else if($this->session->userdata('super_is_logged_in')==True){
-		$this->load->view('Templets/supertemplet/header',$data);
-		}
-		else if($this->session->userdata('man_is_logged_in')==True){
-		$this->load->view('Templets/mantemplet/header',$data);
-		$this->load->view('other/personal_info',$data);
-
-		}
-		else if($this->session->userdata('is_logged_in')==True){
+		if($this->session->userdata('is_logged_in')==True){
 		$this->load->view('Templets/admintemplet/header',$data);
-		$this->load->view('admin/personal_info',$data);
+    	$this->load->view('admin/personal_info');
+    	$this->load->view('Templets/footer');
 		}
-		
-		$this->load->view('Templets/footer');
+		else redirect("Login");
+
 
 		}
 	

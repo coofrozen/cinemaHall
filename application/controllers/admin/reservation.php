@@ -18,17 +18,13 @@ class Reservation extends CI_Controller {
 		
 		$data['title']="Reservation";
 
-		if($this->session->userdata('staff_is_logged_in')==True){
-		$this->load->view('Templets/stafftemplet/header',$data);
-		}
-		else if($this->session->userdata('is_logged_in')==True){
-		$this->load->view('Templets/admintemplet/header',$data);
-		$this->load->view('admin/reservation_view',$data);
+		if($this->session->userdata('is_logged_in')==True){
+			$this->load->view('Templets/admintemplet/header',$data);
+			$this->load->view('admin/reservation_view');
+			$this->load->view('Templets/footer');
 		}		
-
-		$this->load->view('Templets/footer');
-
-
+		else redirect("Login");
+		
 		}
 
 		public function ajax_list()

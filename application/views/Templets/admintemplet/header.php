@@ -52,7 +52,7 @@
           <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
               <li>
-                  <a href="#"><i class="fas fa-film text-yellow"></i> <span>&nbsp;CINEMAS</span></a>
+                  <a href="<?php echo base_url('Admin/shows')?>"><i class="fas fa-film text-yellow"></i> <span>&nbsp;SHOWS</span></a>
               </li>
               <li>
                   <a href="<?php echo base_url('Admin/reservation')?>"><i class="fa fa-check-circle text-red"></i> <span>&nbsp;RESERVATIONS</span></a>
