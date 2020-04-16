@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 16, 2020 at 03:34 PM
+-- Generation Time: Apr 16, 2020 at 09:48 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.28
 
@@ -238,15 +238,65 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `shows_detail`
+-- Table structure for table `shows`
 --
 
-DROP TABLE IF EXISTS `shows_detail`;
-CREATE TABLE `shows_detail` (
+DROP TABLE IF EXISTS `shows`;
+CREATE TABLE `shows` (
   `id` int(5) NOT NULL,
-  `show_title` varchar(100) NOT NULL,
-  `show_genrs` set('Action Films','Adventure Films','Comedy Films','Drama Films','Horror Films','Science Fiction Films','Biographical Films (or "Biopics") - or Historical') NOT NULL
+  `load_time` datetime NOT NULL,
+  `show_title` varchar(30) DEFAULT NULL,
+  `show_identifier` varchar(60) NOT NULL,
+  `show_genrs` varchar(30) NOT NULL,
+  `show_start_date` date NOT NULL,
+  `show_end_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `shows`
+--
+
+INSERT INTO `shows` (`id`, `load_time`, `show_title`, `show_identifier`, `show_genrs`, `show_start_date`, `show_end_date`) VALUES
+(1, '2020-04-16 20:54:17', 'HERMELA2', '2020-04-16 20:54:17HERMELA2', 'Biographical Films', '2020-04-17', '2020-04-21'),
+(2, '2020-04-16 22:21:00', 'ADWA THE MOVIE', '2020-04-16 22:21:00ADWA', 'Biographical Films', '2020-04-16', '2020-05-16');
+
+--
+-- Triggers `shows`
+--
+DROP TRIGGER IF EXISTS `b4_insert_shows`;
+DELIMITER $$
+CREATE TRIGGER `b4_insert_shows` BEFORE INSERT ON `shows` FOR EACH ROW BEGIN	
+set new.load_time = NOW();
+
+set new.show_identifier=concat(new.load_time,new.show_title);   
+
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `show_genre`
+--
+
+DROP TABLE IF EXISTS `show_genre`;
+CREATE TABLE `show_genre` (
+  `show_genre` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `show_genre`
+--
+
+INSERT INTO `show_genre` (`show_genre`) VALUES
+('Action Films'),
+('Adventure Films'),
+('Biographical Films'),
+('Comedy Films'),
+('Drama Films'),
+('Horror Films'),
+('Science Fiction Films');
 
 -- --------------------------------------------------------
 
@@ -316,8 +366,8 @@ CREATE TABLE `user_login` (
 --
 
 INSERT INTO `user_login` (`id`, `username`, `password`, `type`, `status`, `name`, `org_id`, `phoneNo`, `email`, `date_created`, `date_updated`, `photo`) VALUES
-(1, 'ethio14543', '23d42f5f3f66498b2c8ff4c20b8c5ac826e47146', 'Admin', 1, 'Anania Mesfin', 14543, '(+251) 911-066609', 'anania.mesfin@ethiotelecom.et', '2020-04-11', '2020-04-11', '1583347943484.png'),
-(2, 'ethio6542', '84f831b21e96401b0209df234a2b0666b2bceda5', 'Staff', 1, 'Teferi Baranto', 6542, '(+251) 911-513054', 'teferi.baranto@ethiotelecom.et', '2020-04-11', '2020-04-11', '1584896819331.jpg');
+(1, 'ethio14543', '298834481ed85e928c4b06c7ef780973b1efb59f', 'Admin', 1, 'Anania Mesfin', 14543, '(+251) 911-066609', 'anania.mesfin@gmail.com', '2020-04-11', '2020-04-16', '1583347943484.png'),
+(2, 'ethio6542', '57edacaa3e41b91f426d536c60e2c8473cade9e4', 'Staff', 1, 'Teferi Baranto', 6542, '(+251) 911-513054', 'teferi.baranto@gmail.com', '2020-04-11', '2020-04-16', '1587065220897.png');
 
 --
 -- Indexes for dumped tables
@@ -336,10 +386,19 @@ ALTER TABLE `reservations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `shows_detail`
+-- Indexes for table `shows`
 --
-ALTER TABLE `shows_detail`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `shows`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `sh_id` (`show_identifier`),
+  ADD KEY `show_genrs` (`show_genrs`);
+
+--
+-- Indexes for table `show_genre`
+--
+ALTER TABLE `show_genre`
+  ADD UNIQUE KEY `prime` (`show_genre`),
+  ADD KEY `show_genre` (`show_genre`);
 
 --
 -- Indexes for table `type`
@@ -384,10 +443,10 @@ ALTER TABLE `reservations`
   MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
 
 --
--- AUTO_INCREMENT for table `shows_detail`
+-- AUTO_INCREMENT for table `shows`
 --
-ALTER TABLE `shows_detail`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `shows`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `upl_time`
@@ -404,6 +463,12 @@ ALTER TABLE `user_login`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `shows`
+--
+ALTER TABLE `shows`
+  ADD CONSTRAINT `shows_ibfk_1` FOREIGN KEY (`show_genrs`) REFERENCES `show_genre` (`show_genre`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user_login`
