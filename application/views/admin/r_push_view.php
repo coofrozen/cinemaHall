@@ -51,12 +51,8 @@
                                   </div>
                                                   <div class="box-body">
     
-                                                      <h4>file uploaded shall not exceed 5MB size and should be with the following file format or extention. <a data-toggle="tooltip" title="light weight spreed sheet file format."> .xls</a></h4>
-                                                      <h4>You can also download the sample file showing the table structure for upload using the following <a href="<?php echo base_url().'Admin/push/download/';?>">link</a></h4>
-                                                      <h4 class="text-red">and clean all the records using the clean button below</h4>
-                                                      <button class="button btn-danger form-control" onclick="truncate()">clean</button>
-
-
+                                                      <h4>file uploaded shall be formated as per the sample which can be downloaded using the link below and shall be of the following file format or extention. <a data-toggle="tooltip" title="comma separeted value."> .csv</a></h4>
+                                                      <h4>You can also download the sample file showing the table structure for upload using the following <a href="<?php echo base_url().'Admin/push/download/';?>">link</a></h4>    
                                                       
                                                   </div>
                                                   <div class="box-footer">

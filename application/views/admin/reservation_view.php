@@ -3,7 +3,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        <i class="fa fa-sitemap text-aqua"></i> Reservation
+        <i class="fas fa-user-check text-red"></i>&nbsp; Reservation
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -16,10 +16,7 @@
   <div class="row">
         <div class="col-xs-12">
           <div class="box box-warning">
-            <div class="box-header">
-  <button  class="btn btn-success" onclick="add_res()"><i class="glyphicon glyphicon-plus"></i>Add Reservation</button>
-	<button class="btn btn-danger pull-right" onclick="bulk_delete()"><i class="glyphicon glyphicon-trash"></i> Bulk Delete</button>
-	           </div>
+            <div class="box-header"></div>
             <!-- /.box-header -->
           <div class="box-body">
 
@@ -28,15 +25,17 @@
         <thead>
         <tr>
 					
-					<th><input type="checkbox" id="check-all"></th>
-          <th>Load Time</th>
+          <th>Attend.</th>          
+          <th>Show Title</th>
+          <th>Show Genre</th>
           <th>Full Name</th>
           <th>Mobile Number</th>
           <th>Seat Info.</th>
           <th>Payment Date</th>
           <th>Ticket Number</th>
-          <th></th>
-          <th></th>
+          <th style="min-width: 25px";></th>
+          <th style="min-width: 25px";></th>
+          <th style="min-width: 25px";></th>
 
           
         </tr>
@@ -44,21 +43,7 @@
       <tbody>
       </tbody>
 
-      <tfoot>
-        <tr>
-          <th></th>
-          <th>Load Time</th>
-          <th>Full Name</th>
-          <th>Mobile Number</th>
-          <th>Seat Info.</th>
-          <th>Payment Date</th>
-          <th>Ticket Number</th>
-          <th></th>
-          <th></th>
-		
-          
-        </tr>
-      </tfoot>
+      
     </table>
    
           </div>
@@ -126,17 +111,8 @@ $(document).ready(function() {
 
 ////////////////////////*****end for search and table nos****/////////////////////////////
 	
-    function add_res()
-    {
-      save_method = 'add';
-      $('#form')[0].reset(); // reset form on modals
-      $('.form-group').removeClass('has-error'); // clear error class
-      $('.help-block').empty(); // clear error string
-      $('#modal_form').modal('show'); // show bootstrap modal
-      $('.modal-title').text('Add New Ne'); // Set Title to Bootstrap modal title
-    }
 
-    function edit_res(id)
+    function edit_res(idr)
     {
       save_method = 'update';
       $('#form')[0].reset(); // reset form on modals
@@ -145,14 +121,14 @@ $(document).ready(function() {
 
       //Ajax Load data from ajax
       $.ajax({
-        url : "<?php echo site_url('index.php/Admin/reservation/ajax_edit/')?>/" + id,
+        url : "<?php echo site_url('index.php/Admin/reservation/ajax_edit/')?>/" + idr,
         type: "GET",
         dataType: "JSON",
         success: function(data)
         {
 //all the hidden ids are names for modal inputs and the data's written in bald are database columns
 
-          $('[name="id"]').val(data.id);
+          $('[name="idr"]').val(data.idr);
           $('[name="full_name"]').val(data.full_name);
           $('[name="mobile_no"]').val(data.mobile_no);
           $('[name="seat_info"]').val(data.seat_info);
@@ -230,13 +206,13 @@ $(document).ready(function() {
     });
 }
 
-    function delete_res(id)
+    function delete_res(idr)
     {
       if(confirm('Are you sure delete the data?'))
       {
         // ajax delete data from database
           $.ajax({
-            url : "<?php echo site_url('Admin/reservation/ne_delete')?>/"+id,
+            url : "<?php echo site_url('Admin/reservation/ne_delete')?>/"+idr,
             type: "POST",
             dataType: "JSON",
             success: function(data)
@@ -253,47 +229,6 @@ $(document).ready(function() {
       }
     }
 
-    function bulk_delete()
-
-    {
-        var list_id = [];
-        $(".data-check:checked").each(function() {
-                list_id.push(this.value);
-        });
-        if(list_id.length > 0)
-        {
-            if(confirm('Are you sure delete this '+list_id.length+' data?'))
-            {
-                $.ajax({
-                    type: "POST",
-                    data: {id:list_id},
-                    url: "<?php echo site_url('Admin/reservation/ajax_bulk_delete')?>",
-                    dataType: "JSON",
-                    success: function(data)
-                    {
-                        if(data.status)
-                        {
-                            reload_table();
-                        }
-                        else
-                        {
-                            alert('Failed.');
-                        }
-                        
-                    },
-                    error: function (jqXHR, textStatus, errorThrown)
-                    {
-                        alert('Error deleting data');
-                    }
-                });
-            }
-        }
-        else
-        {
-            alert('Please Select Some Data');
-        }
-    }
-
 </script>
 
 
@@ -308,7 +243,7 @@ $(document).ready(function() {
       </div>
       <div class="modal-body form">
         <form action="#" id="form" class="form-horizontal">
-          <input type="hidden" value="" name="id"/>
+          <input type="hidden" value="" name="idr"/>
           <div class="form-body">
              <div class="form-group">
                 <label class="control-label col-md-3">Full Name</label>

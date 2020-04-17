@@ -4,9 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Import_model extends CI_Model
 {
 	var $table = 'reservations';
-	var $column_order = array( 'load_time', 'full_name', 'mobile_no', 'seat_info', 'payment_date', 'ticket_no'); //set column field database for datatable orderable
-	var $column_search = array('full_name','mobile_no','ticket_no'); //set column field database for datatable searchable just firstname , lastname , address are searchable
-	var $order = array('id' => 'desc'); // default order 
+	var $column_order = array('attendance','show_title','show_genrs', 'full_name','mobile_no', 'seat_info', 'payment_date', 'ticket_no'); //set column field database for datatable orderable
+	var $column_search = array('full_name','mobile_no','ticket_no','attendance','payment_date','show_title','show_genrs'); //set column field database for datatable searchable just firstname , lastname , address are searchable
+	var $order = array('idr' => 'desc'); // default order 
 
 
 	public function __construct()
@@ -27,9 +27,9 @@ public function all_rows()
 
 // populate the table
 
-public function push($full_name,$mobile_no,$seat_info,$payment_date,$ticket_no)
+public function push($full_name,$mobile_no,$seat_info,$payment_date,$ticket_no,$show_identifier)
 	{
-		$query="INSERT INTO reservations (id, load_time, full_name, mobile_no, seat_info, payment_date, ticket_no) values('','','$full_name','$mobile_no','$seat_info','$payment_date','$ticket_no')";
+		$query="INSERT INTO reservations (idr, load_time, full_name, mobile_no, seat_info, payment_date, ticket_no,show_identifier) values('','','$full_name','$mobile_no','$seat_info','$payment_date','$ticket_no','$show_identifier')";
 		$this->db->query($query);
 		
 	}
@@ -43,9 +43,10 @@ public function upl_time($data){
 
 private function _get_datatables_query()
 	{
-		$this->db->select();
-		$this->db->from('reservations l');
 
+		$this->db->select('*');
+		$this->db->from('reservations r');
+		$this->db->join('shows s', 'r.show_identifier = s.id');
 
 		$i = 0;
 	
@@ -106,15 +107,10 @@ private function _get_datatables_query()
 	public function get_by_id($id)
 	{
 		$this->db->from($this->table);
-		$this->db->where('id',$id);
+		$this->db->where('idr',$id);
 		$query = $this->db->get();
 
 		return $query->row();
-	}
-	public function save($data)
-	{
-		$this->db->insert($this->table, $data);
-		return $this->db->insert_id();
 	}
 
 	public function update($where, $data)
@@ -125,7 +121,7 @@ private function _get_datatables_query()
 
 	public function delete_by_id($id)
 	{
-		$this->db->where('id', $id);
+		$this->db->where('idr', $id);
 		$this->db->delete($this->table);
 	}
 	

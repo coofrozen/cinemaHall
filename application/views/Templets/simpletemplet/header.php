@@ -52,15 +52,15 @@
           <div class="collapse navbar-collapse" id="navbar-collapse">
             <ul class="nav navbar-nav">
               <li>
-                  <a href="#"><i class="fas fa-film text-yellow"></i> <span>&nbsp;CINEMAS</span></a>
+                  <a href="<?php echo base_url('shows')?>"><i class="fas fa-film text-yellow"></i> <span>&nbsp;SHOWS</span></a>
               </li>
               <li>
-                  <a href="#"><i class="fa fa-check-circle text-red"></i> <span>&nbsp;RESERVATIONS</span></a>
+                  <a href="<?php echo base_url('reservation')?>"><i class="fa fa-check-circle text-red"></i> <span>&nbsp;RESERVATIONS</span></a>
               </li>
             </ul>
 
-      <ul class="nav navbar-nav navbar-right">
-               <!-- User Account: style can be found in dropdown.less -->
+            <ul class="nav navbar-nav navbar-right">
+                        <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="<?php echo base_url('upload')."/". $this->session->userdata('pic');?>" class="user-image" alt="User Image">
@@ -84,7 +84,7 @@
                   <a class="btn btn-success btn-flat" href="<?php echo base_url('personal_info');?>">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a class="btn btn-danger btn-flat" href="<?php echo base_url('login/admin_logout');?>">Sign out</a>
+                  <a class="btn btn-danger btn-flat" href="<?php echo base_url('login/staff_logout');?>">Sign out</a>
                 </div>
               </li>
             </ul>

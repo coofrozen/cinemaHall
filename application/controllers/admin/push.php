@@ -36,7 +36,7 @@ public function r_push(){
 
       $config = array(
         'upload_path' => FCPATH.'upload/excel_bulk/reservation_list/',
-        'allowed_types' => '*'
+        'allowed_types' => 'csv'
     );
     $this->load->library('upload',$config);
     
@@ -62,8 +62,9 @@ public function r_push(){
                 $seat_info = $filesop[2];
                 $payment_date = $filesop[3];
                 $ticket_no = $filesop[4];
+                $show_identifier  = $filesop[5];
                 if($c<>0){          //SKIP THE FIRST ROW
-                      $this->import_model->push($full_name,$mobile_no,$seat_info,$payment_date,$ticket_no);
+                      $this->import_model->push($full_name,$mobile_no,$seat_info,$payment_date,$ticket_no,$show_identifier);
                 }
                 $c = $c + 1;
               }

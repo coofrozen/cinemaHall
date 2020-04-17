@@ -54,10 +54,20 @@
               <li>
                   <a href="<?php echo base_url('Admin/shows')?>"><i class="fas fa-film text-yellow"></i> <span>&nbsp;SHOWS</span></a>
               </li>
-              <li>
-                  <a href="<?php echo base_url('Admin/reservation')?>"><i class="fa fa-check-circle text-red"></i> <span>&nbsp;RESERVATIONS</span></a>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fas fa-check-circle text-red"></i><span>&nbsp;RESERVATIONS</span> <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="<?php echo base_url('Admin/reservation')?>"><i class="fas fa-check text-yellow"></i> <span>&nbsp;ALL RESERVATIONS</span>
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                      <a href="<?php echo base_url('Admin/push')?>"><i class="fas fa-upload text-blue"></i> <span>&nbsp;UPLOAD RESERVATIONS</span></a>
+                    </li>
+                </ul>
               </li>
             </ul>
+            
 
             <ul class="nav navbar-nav navbar-right">
               <li>

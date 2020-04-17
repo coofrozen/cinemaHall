@@ -38,9 +38,8 @@ class Shows extends CI_Controller {
     foreach ($list as $site) {
       $no++;
       $row = array();
-      if($this->session->userdata('is_logged_in')==True){
+      
       $row[] = '<input type="checkbox" class="data-check" value="'.$site->id.'">';
-      } 
       $row[] = '<td class="bg-success">'.$site->load_time.'<td>';
       $row[] = $site->show_title;
       $row[] = $site->show_identifier;
