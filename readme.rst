@@ -1,6 +1,7 @@
-###################
+**************************
 CINEMAHALL
-###################
+**************************
+**************************
 
 cinimahall is a php mvc project based up on the codeigniter mvc framework. for codeigniter mvc latest stable release please visit the `CodeIgniter Downloads
 <http://www.codeigniter.com/download>`_ page.
@@ -31,8 +32,17 @@ folder in your web applications folder.
 git clone https://github.com/coofrozen/cinemaHall.git
 
 +you can find the database file located in the root directory 
-cinimahalldb.sql
+database/cinimahalldb.sql
 
 upload the database to your local machine via phpmyadmin or other mysql client software.
 
+edit the database connection file under 
+applicatio/config/database.php
 
+please provide any comment if you have any
+
+you can contact me by:
+
+Anania Mesfin
+coofrozen@gmail.com
++251911066609
