@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Show_model extends CI_Model
 {
 	var $table = 'shows';
-	var $column_order = array( null,'show_identifier','load_time', 'show_title', 'show_genrs','show_start_date','show_end_date'); //set column field database for datatable orderable
-	var $column_search = array('show_identifier','load_time', 'show_title', 'show_genrs','show_start_date','show_end_date'); //set column field database for datatable searchable just firstname , lastname , address are searchable
+	var $column_order = array( null,'show_iden','load_time', 'show_title', 'show_genrs','show_start_date','show_end_date'); //set column field database for datatable orderable
+	var $column_search = array('show_iden','load_time', 'show_title', 'show_genrs','show_start_date','show_end_date'); //set column field database for datatable searchable just firstname , lastname , address are searchable
 	var $order = array('id' => 'desc'); // default order 
 
 

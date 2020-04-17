@@ -7,7 +7,7 @@ public function __construct()
 	 	{
 	 		parent::__construct();
 			$this->load->helper('url');
-			if($this->session->userdata('is_logged_in')==False){
+			if($this->session->userdata('staff_is_logged_in')==False){
                 redirect("Login");
             }
 	 		$this->load->model('users_model');
@@ -20,8 +20,8 @@ public function __construct()
 		
 		$data['title']="Personal Info";
 
-		$this->load->view('Templets/admintemplet/header',$data);
-    	$this->load->view('admin/personal_info');
+		$this->load->view('Templets/simpletemplet/header',$data);
+    	$this->load->view('other/personal_info');
     	$this->load->view('Templets/footer');
 
 

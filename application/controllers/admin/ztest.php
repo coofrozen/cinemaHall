@@ -10,6 +10,9 @@ class Dashboard extends CI_Controller {
               $this->load->model('unread_model','unread');    
 
           /*session checks */ 
+          if($this->session->userdata('is_logged_in')==False){
+                redirect("Login");
+          }
 
     }
 
@@ -24,19 +27,9 @@ class Dashboard extends CI_Controller {
       $data['title']="session";
 
       $this->load->view('Templets/admintemplet/header',$data);
-    	$this->load->view('admin/dashboard');
+    	$this->load->view('admin/unit_test');
       $this->load->view('Templets/footer');
     }
-    public function modal_mode(){
 
-      $data['title']="modal";
-
-          $data['recordsTotal'] =  $this->self->count_all_self();
-
-      $this->load->view('Templets/admintemplet/header',$data);
-      $this->load->view('modal_mode_view');
-      $this->load->view('Templets/footer');
-
-    }
 }
            

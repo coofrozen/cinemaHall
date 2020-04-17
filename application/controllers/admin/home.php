@@ -6,8 +6,13 @@ class Home extends CI_Controller {
         {
             parent::__construct();
             $this->load->helper('url');
+
+            if($this->session->userdata('is_logged_in')==False){
+                redirect("Login");
+            }
             $this->load->model('import_model','reservs');
             $this->load->model('show_model','shows');
+
              
         }
     
@@ -20,15 +25,12 @@ class Home extends CI_Controller {
         $data['reserve_count'] = $this->reservs->count_all();
         $data['shows_count'] = $this->shows->count_all();
 
-        if($this->session->userdata('is_logged_in')==True){
+        
         $this->load->view('Templets/admintemplet/header',$data);
         $this->load->view('admin/dash');
         $this->load->view('Templets/footer');
-        }
-        else redirect("Login");
-    }
     
 
 
+    }
 }
-?>

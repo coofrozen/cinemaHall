@@ -7,6 +7,9 @@ class Push extends CI_Controller {
         {
             parent::__construct();
             $this->load->helper('url');
+            if($this->session->userdata('is_logged_in')==False){
+                redirect("Login");
+            }
             $this->load->model('import_model');
              
         }
@@ -21,12 +24,10 @@ function index()
     $data['row_number']=$this->import_model->all_rows();
 
 
-    if($this->session->userdata('is_logged_in')==True){
         $this->load->view('Templets/admintemplet/header',$data);
         $this->load->view('admin/r_push_view');
         $this->load->view('Templets/footer');
-    }   
-    else redirect("Login");
+
 
     
   }
@@ -64,7 +65,7 @@ public function r_push(){
                 $ticket_no = $filesop[4];
                 $show_identifier  = $filesop[5];
                 if($c<>0){          //SKIP THE FIRST ROW
-                      $this->import_model->push($full_name,$mobile_no,$seat_info,$payment_date,$ticket_no,$show_identifier);
+                      $this->import_model->push($full_name,$mobile_no,$seat_info,date("Y-m-d",strtotime($payment_date)),$ticket_no,$show_identifier);
                 }
                 $c = $c + 1;
               }

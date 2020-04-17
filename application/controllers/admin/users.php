@@ -7,6 +7,9 @@ class Users extends CI_Controller {
 	 	{
 	 		parent::__construct();
 			$this->load->helper('url');
+			if($this->session->userdata('is_logged_in')==False){
+                redirect("Login");
+            }
 	 		$this->load->model('users_model','users');
 
 			
@@ -20,16 +23,9 @@ class Users extends CI_Controller {
 		$data['title']="users";
 
 
-		if($this->session->userdata('is_logged_in')==True){
 		$this->load->view('Templets/admintemplet/header',$data);
 		$this->load->view('admin/users_view');
 		$this->load->view('Templets/footer');
-
-		}	
-		else{
-			redirect("home");
-		}	
-
 
 	}
 

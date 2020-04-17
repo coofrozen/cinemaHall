@@ -8,6 +8,9 @@ class Shows extends CI_Controller {
     {
       parent::__construct();
       $this->load->helper('url');
+      if($this->session->userdata('is_logged_in')==False){
+                redirect("Login");
+      }
       $this->load->model('show_model','sho_mod');
 
 
@@ -19,13 +22,10 @@ class Shows extends CI_Controller {
     $data['title']="Shows";
     $data['show_genere']=$this->sho_mod->show_all_genrs();
 
-    if($this->session->userdata('is_logged_in')==True){
       $this->load->view('Templets/admintemplet/header',$data);
       $this->load->view('admin/show_view');
       $this->load->view('Templets/footer');
-    }   
-    else redirect("Login");
-    
+
     }
 
     public function ajax_list()
@@ -39,10 +39,10 @@ class Shows extends CI_Controller {
       $no++;
       $row = array();
       
-      $row[] = '<input type="checkbox" class="data-check" value="'.$site->id.'">';
-      $row[] = '<td class="bg-success">'.$site->load_time.'<td>';
+      $row[] = $site->id;
+      $row[] = $site->load_time;
       $row[] = $site->show_title;
-      $row[] = $site->show_identifier;
+      $row[] = $site->show_iden;
       $row[] = $site->show_genrs;
       $row[] = $site->show_start_date;
       $row[] = $site->show_end_date;
@@ -109,15 +109,6 @@ class Shows extends CI_Controller {
   public function show_delete($id)
   {
     $this->sho_mod->delete_by_id($id);
-    echo json_encode(array("status" => TRUE));
-  }
-
-  public function ajax_bulk_delete()
-  {
-    $list_id = $this->input->post('id');
-    foreach ($list_id as $id) {
-      $this->sho_mod->delete_by_id($id);
-    }
     echo json_encode(array("status" => TRUE));
   }
   

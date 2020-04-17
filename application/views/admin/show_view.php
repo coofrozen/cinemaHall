@@ -18,7 +18,6 @@
           <div class="box box-warning">
             <div class="box-header">
   <button  class="btn btn-success" onclick="add_show()"><i class="glyphicon glyphicon-plus"></i>New Show</button>
-  <button class="btn btn-danger pull-right" onclick="bulk_delete()"><i class="glyphicon glyphicon-trash"></i> Bulk Delete</button>
              </div>
             <!-- /.box-header -->
           <div class="box-body">
@@ -28,7 +27,7 @@
         <thead>
         <tr>
           
-          <th><input type="checkbox" id="check-all"></th>
+          <th>ID</th>
           <th>Load Time</th>
           <th>Show Title</th>
           <th>Show Identifier</th>

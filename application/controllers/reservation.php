@@ -8,7 +8,7 @@ class Reservation extends CI_Controller {
 	 	{
 	 		parent::__construct();
 			$this->load->helper('url');
-			if($this->session->userdata('is_logged_in')==False){
+			if($this->session->userdata('staff_is_logged_in')==False){
                 redirect("Login");
             }
 	 		$this->load->model('import_model','imp_mod');
@@ -21,8 +21,8 @@ class Reservation extends CI_Controller {
 		
 		$data['title']="Reservation";
 
-			$this->load->view('Templets/admintemplet/header',$data);
-			$this->load->view('admin/reservation_view');
+			$this->load->view('Templets/simpletemplet/header',$data);
+			$this->load->view('other/reservation_view');
 			$this->load->view('Templets/footer');
 	
 		}
@@ -46,13 +46,11 @@ class Reservation extends CI_Controller {
 			$row[] = $site->payment_date;
 			$row[] = $site->ticket_no;
 
-
-
-			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_res('."'".$site->idr."'".')"><i class="glyphicon glyphicon-pencil"></i></a>';
-				
-			 
-			$row[] = '<a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Delete" onclick="delete_res('."'".$site->idr."'".')"><i class="glyphicon glyphicon-trash"></i></a>';
 			
+			//add html for action
+			$row[] = '<a class="btn btn-sm btn-warning" href="javascript:void(0)" title="Attend." onclick="edit_res('."'".$site->idr."'".')"><i class="fas fa-user-check text-red"></i></a>';
+
+
 			$data[] = $row;
 		}
 
@@ -76,14 +74,7 @@ class Reservation extends CI_Controller {
 	{
 		 $this->_validate();
 			$data = array(
-
-					'full_name' => $this->input->post('full_name'),
-					'mobile_no' => $this->input->post('mobile_no'),
-					'seat_info' => $this->input->post('seat_info'),
-					'payment_date' => $this->input->post('payment_date'),
-					'ticket_no' => $this->input->post('ticket_no'),
 					'attendance' => $this->input->post('attendance')
-
 				);
 		$this->imp_mod->update(array('idr' => $this->input->post('idr')), $data);
 		echo json_encode(array("status" => TRUE));
@@ -102,40 +93,6 @@ class Reservation extends CI_Controller {
 		$data['inputerror'] = array();
 		$data['status'] = TRUE;
 
-		if($this->input->post('full_name') == '')
-		{
-			$data['inputerror'][] = 'full_name';
-			$data['error_string'][] = 'Field is required';
-			$data['status'] = FALSE;
-		}
-
-		if($this->input->post('mobile_no') == '')
-		{
-			$data['inputerror'][] = 'mobile_no';
-			$data['error_string'][] = 'Field is required';
-			$data['status'] = FALSE;
-		}
-
-		if($this->input->post('seat_info') == '')
-		{
-			$data['inputerror'][] = 'seat_info';
-			$data['error_string'][] = 'Field is required';
-			$data['status'] = FALSE;
-		}
-
-		if($this->input->post('payment_date') == '')
-		{
-			$data['inputerror'][] = 'payment_date';
-			$data['error_string'][] = 'Field is required';
-			$data['status'] = FALSE;
-		}
-
-		if($this->input->post('ticket_no') == '')
-		{
-			$data['inputerror'][] = 'ticket_no';
-			$data['error_string'][] = 'Field is required';
-			$data['status'] = FALSE;
-		}
 
 		if($this->input->post('attendance') == '')
 		{

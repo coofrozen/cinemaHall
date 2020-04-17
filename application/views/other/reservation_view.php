@@ -34,7 +34,6 @@
           <th>Payment Date</th>
           <th>Ticket Number</th>
           <th style="min-width: 25px";></th>
-          <th style="min-width: 25px";></th>
 
           
         </tr>
@@ -76,7 +75,7 @@ $(document).ready(function() {
 
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": "<?php echo site_url('Admin/reservation/ajax_list')?>",
+            "url": "<?php echo site_url('reservation/ajax_list')?>",
             "type": "POST"
         },
 
@@ -96,15 +95,14 @@ $(document).ready(function() {
     });
 
   });
+
+
     
 
     var save_method; //for save method string
     var table;
 
-////////////////////////*****end for search and table nos****/////////////////////////////
-	
-
-    function edit_res(idr)
+      function edit_res(idr)
     {
       save_method = 'update';
       $('#form')[0].reset(); // reset form on modals
@@ -113,7 +111,7 @@ $(document).ready(function() {
 
       //Ajax Load data from ajax
       $.ajax({
-        url : "<?php echo site_url('index.php/Admin/reservation/ajax_edit/')?>/" + idr,
+        url : "<?php echo site_url('reservation/ajax_edit/')?>/" + idr,
         type: "GET",
         dataType: "JSON",
         success: function(data)
@@ -121,11 +119,6 @@ $(document).ready(function() {
 //all the hidden ids are names for modal inputs and the data's written in bald are database columns
 
           $('[name="idr"]').val(data.idr);
-          $('[name="full_name"]').val(data.full_name);
-          $('[name="mobile_no"]').val(data.mobile_no);
-          $('[name="seat_info"]').val(data.seat_info);
-          $('[name="payment_date"]').val(data.payment_date);
-          $('[name="ticket_no"]').val(data.ticket_no);
           $('[name="attendance"]').val(data.attendance);
 
 
@@ -158,11 +151,11 @@ $(document).ready(function() {
       var url;
       if(save_method == 'add')
       {
-          url = "<?php echo site_url('Admin/reservation/ne_add')?>";
+          url = "<?php echo site_url('reservation/ne_add')?>";
       }
       else
       {
-          url = "<?php echo site_url('Admin/reservation/ne_update')?>";
+          url = "<?php echo site_url('reservation/ne_update')?>";
       }
 
        // ajax adding data to database
@@ -207,7 +200,7 @@ $(document).ready(function() {
       {
         // ajax delete data from database
           $.ajax({
-            url : "<?php echo site_url('Admin/reservation/ne_delete')?>/"+idr,
+            url : "<?php echo site_url('reservation/ne_delete')?>/"+idr,
             type: "POST",
             dataType: "JSON",
             success: function(data)
@@ -240,43 +233,7 @@ $(document).ready(function() {
         <form action="#" id="form" class="form-horizontal">
           <input type="hidden" value="" name="idr"/>
           <div class="form-body">
-
              <div class="form-group">
-                <label class="control-label col-md-3">Full Name</label>
-                <div class="col-md-9">
-                  <input class="form-control" name="full_name" placeholder="Full Name" type="text"/>
-                  <span class="help-block"></span>
-                </div>  
-             </div> 
-            <div class="form-group">
-              <label class="control-label col-md-3">Mobile Number</label>
-              <div class="col-md-9">
-                <input name="mobile_no" placeholder="Mobile Number" class="form-control" type="text" required="">
-                <span class="help-block"></span>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-md-3">Seat Info</label>
-              <div class="col-md-9">
-                <input name="seat_info" placeholder="Seat Info" class="form-control" type="text" required="">
-                <span class="help-block"></span>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-md-3">Payment Date</label>
-              <div class="col-md-9">
-                <input name="payment_date" placeholder="Payment Date" class="form-control" type="date" required="">
-                <span class="help-block"></span>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-md-3">Ticket Number</label>
-              <div class="col-md-9">
-                <input name="ticket_no" placeholder="Ticket Number" class="form-control" type="text" required="">
-                <span class="help-block"></span>
-              </div>
-            </div>
-            <div class="form-group">
               <label class="control-label col-md-3">Attendance Info</label>
               <div class="col-md-9">
                 <select class="form-control select2" name="attendance">

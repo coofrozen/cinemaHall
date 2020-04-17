@@ -3,12 +3,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        <i class="fas fa-user-check text-red"></i>&nbsp; Reservation
+        <i class="fa fa-sitemap text-aqua"></i> show
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Main Settings</a></li>
-        <li class="active">Reservation</li>
+        <li class="active">show</li>
       </ol>
     </section>
 
@@ -24,25 +24,21 @@
       <table id="table" class="table table-striped table-bordered table-condensed table-hover" cellspacing="0" width="100%">
         <thead>
         <tr>
-					
-          <th>Attend.</th>          
+          
+          <th>ID</th>
+          <th>Load Time</th>
           <th>Show Title</th>
-          <th>Show Genre</th>
-          <th>Full Name</th>
-          <th>Mobile Number</th>
-          <th>Seat Info.</th>
-          <th>Payment Date</th>
-          <th>Ticket Number</th>
-          <th style="min-width: 25px";></th>
-          <th style="min-width: 25px";></th>
+          <th>Show Identifier</th>
+          <th>Seat Genrs.</th>
+          <th>Show Start Date</th>
+          <th>Show End Date</th>
+
 
           
         </tr>
       </thead>
       <tbody>
       </tbody>
-
-      
     </table>
    
           </div>
@@ -76,7 +72,7 @@ $(document).ready(function() {
 
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": "<?php echo site_url('Admin/reservation/ajax_list')?>",
+            "url": "<?php echo site_url('shows/ajax_list')?>",
             "type": "POST"
         },
 
@@ -96,15 +92,31 @@ $(document).ready(function() {
     });
 
   });
+
+
+
+    $("#check-all").click(function () {
+        $(".data-check").prop('checked', $(this).prop('checked'));
+    });
+
     
 
     var save_method; //for save method string
     var table;
 
 ////////////////////////*****end for search and table nos****/////////////////////////////
-	
+  
+    function add_show()
+    {
+      save_method = 'add';
+      $('#form')[0].reset(); // reset form on modals
+      $('.form-group').removeClass('has-error'); // clear error class
+      $('.help-block').empty(); // clear error string
+      $('#modal_form').modal('show'); // show bootstrap modal
+      $('.modal-title').text('Add New Ne'); // Set Title to Bootstrap modal title
+    }
 
-    function edit_res(idr)
+    function edit_show(id)
     {
       save_method = 'update';
       $('#form')[0].reset(); // reset form on modals
@@ -113,25 +125,21 @@ $(document).ready(function() {
 
       //Ajax Load data from ajax
       $.ajax({
-        url : "<?php echo site_url('index.php/Admin/reservation/ajax_edit/')?>/" + idr,
+        url : "<?php echo site_url('shows/ajax_edit/')?>/" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data)
         {
 //all the hidden ids are names for modal inputs and the data's written in bald are database columns
 
-          $('[name="idr"]').val(data.idr);
-          $('[name="full_name"]').val(data.full_name);
-          $('[name="mobile_no"]').val(data.mobile_no);
-          $('[name="seat_info"]').val(data.seat_info);
-          $('[name="payment_date"]').val(data.payment_date);
-          $('[name="ticket_no"]').val(data.ticket_no);
-          $('[name="attendance"]').val(data.attendance);
-
-
+          $('[name="id"]').val(data.id);
+          $('[name="show_title"]').val(data.show_title);
+          $('[name="show_genrs"]').val(data.show_genrs);
+          $('[name="show_start_date"]').val(data.show_start_date);
+          $('[name="show_end_date"]').val(data.show_end_date);
 
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-            $('.modal-title').text('Edit Reservation Info'); // Set title to Bootstrap modal title
+            $('.modal-title').text('Edit Show Info'); // Set title to Bootstrap modal title
 
         },
         error: function (jqXHR, textStatus, errorThrown)
@@ -158,11 +166,11 @@ $(document).ready(function() {
       var url;
       if(save_method == 'add')
       {
-          url = "<?php echo site_url('Admin/reservation/ne_add')?>";
+          url = "<?php echo site_url('shows/show_add')?>";
       }
       else
       {
-          url = "<?php echo site_url('Admin/reservation/ne_update')?>";
+          url = "<?php echo site_url('shows/show_update')?>";
       }
 
        // ajax adding data to database
@@ -201,29 +209,6 @@ $(document).ready(function() {
     });
 }
 
-    function delete_res(idr)
-    {
-      if(confirm('Are you sure delete the data?'))
-      {
-        // ajax delete data from database
-          $.ajax({
-            url : "<?php echo site_url('Admin/reservation/ne_delete')?>/"+idr,
-            type: "POST",
-            dataType: "JSON",
-            success: function(data)
-            {
-               
-               location.reload();
-            },
-            error: function (jqXHR, textStatus, errorThrown)
-            {
-                alert('Error deleting data');
-            }
-        });
-
-      }
-    }
-
 </script>
 
 
@@ -234,55 +219,42 @@ $(document).ready(function() {
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h3 class="modal-title" >Reservation ADD</h3>
+        <h3 class="modal-title" >SHOW ADD</h3>
       </div>
       <div class="modal-body form">
         <form action="#" id="form" class="form-horizontal">
-          <input type="hidden" value="" name="idr"/>
+          <input type="hidden" value="" name="id"/>
           <div class="form-body">
-
              <div class="form-group">
-                <label class="control-label col-md-3">Full Name</label>
+                <label class="control-label col-md-3">Show Title</label>
                 <div class="col-md-9">
-                  <input class="form-control" name="full_name" placeholder="Full Name" type="text"/>
+                  <input class="form-control" name="show_title" placeholder="Full Name" type="text"/>
                   <span class="help-block"></span>
-                </div>  
+                </div>
              </div> 
-            <div class="form-group">
-              <label class="control-label col-md-3">Mobile Number</label>
+             <div class="form-group">
+              <label class="control-label col-md-3">Show Genrs</label>
               <div class="col-md-9">
-                <input name="mobile_no" placeholder="Mobile Number" class="form-control" type="text" required="">
-                <span class="help-block"></span>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-md-3">Seat Info</label>
-              <div class="col-md-9">
-                <input name="seat_info" placeholder="Seat Info" class="form-control" type="text" required="">
-                <span class="help-block"></span>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-md-3">Payment Date</label>
-              <div class="col-md-9">
-                <input name="payment_date" placeholder="Payment Date" class="form-control" type="date" required="">
-                <span class="help-block"></span>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-md-3">Ticket Number</label>
-              <div class="col-md-9">
-                <input name="ticket_no" placeholder="Ticket Number" class="form-control" type="text" required="">
-                <span class="help-block"></span>
-              </div>
-            </div>
-            <div class="form-group">
-              <label class="control-label col-md-3">Attendance Info</label>
-              <div class="col-md-9">
-                <select class="form-control select2" name="attendance">
-                    <option value="1">ATTENDED</option>
-                    <option value="0">NOT ATTENDED</option>
+                <select class="form-control select2" name="show_genrs">
+                  <option value="">..Please Select..</option>
+                  <?php foreach ($show_genere as $sho) {?>
+                    <option value="<?php echo $sho->show_genre;?>"><?php echo $sho->show_genre;?></option>
+                  <?php } ?>
                 </select>                
+                <span class="help-block"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-md-3">Show Start Date</label>
+              <div class="col-md-9">
+                <input name="show_start_date" placeholder="Show Start Date" class="form-control" type="date" required="">
+                <span class="help-block"></span>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-md-3">Show End Date</label>
+              <div class="col-md-9">
+                <input name="show_end_date" placeholder="Show End Date" class="form-control" type="date" required="">
                 <span class="help-block"></span>
               </div>
             </div>
