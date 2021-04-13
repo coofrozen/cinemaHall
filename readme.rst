@@ -33,6 +33,13 @@ such old versions of PHP, because of potential security and performance issues, 
 Installation
 ************
 please clone this repository to your machine and extract the 
+
+
+please leave a star to this Repo it would help the code reach out more places.
+
+developed by 
+-Anania Mesfin
+-a self tought software developer with lots of experience
 folder in your web applications folder.
 
 +run the following line of code from your local git bash.
